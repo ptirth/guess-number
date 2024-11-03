@@ -1,0 +1,5 @@
+# Build directories
+build*/
+
+# LSP and other cache
+.cache/
