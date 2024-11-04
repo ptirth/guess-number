@@ -7,7 +7,7 @@ project(
 )
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_C_COMPILER "/usr/bin/clang")
+set(CMAKE_C_COMPILER "/usr/bin/gcc")
 set(CMAKE_C_FLAGS "-Wall -std=c11")
 set(CMAKE_C_FLAGS_DEBUG "-g3")
 
