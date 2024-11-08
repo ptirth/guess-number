@@ -33,6 +33,15 @@ static char *getline(char buffer[MAX_LINE_LEN]) {
   return buffer;
 }
 
+static u32 prompt(const char *message) {
+  printf("%s", message);
+
+  char buffer[MAX_LINE_LEN] = {0};
+  getline(buffer);
+
+  return str_to_u32(buffer);
+}
+
 int main() {
   printf("Guess the Number!\n");
   return 0;
