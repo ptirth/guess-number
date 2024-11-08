@@ -1,7 +1,10 @@
 #include "mydefs.h"
 #include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+
+#define MAX_LINE_LEN 121
 
 static u32 str_to_u32(const char *string) {
   const size_t len = strlen(string);
@@ -16,6 +19,18 @@ static u32 str_to_u32(const char *string) {
     num = num * 10 + digit;
   }
   return num;
+}
+
+static char *getline(char buffer[MAX_LINE_LEN]) {
+  char c;
+  size_t i = 0;
+
+  for (; i < MAX_LINE_LEN - 1 && (c = getchar()) != '\n' && c != EOF; ++i) {
+    buffer[i] = c;
+  }
+  buffer[++i] = '\0';
+
+  return buffer;
 }
 
 int main() {
