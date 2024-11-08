@@ -74,5 +74,22 @@ int main() {
   srand(time(NULL));
   const u32 chosen_number = rand() % (max_num + 1);
 
+  for (u32 i = 1; i <= tries; ++i) {
+    if (i == 1) {
+      printf("-> Guess the number\n=> ");
+    } else if (i < tries) {
+      printf("-> Try again\n=> ");
+    } else {
+      printf("Last try! Think carefully\n=> ");
+    }
+
+    const u32 guess = prompt("");
+    if (guess == chosen_number) {
+      printf("---> You won!\n");
+      return EXIT_SUCCESS;
+    }
+  }
+
+  printf("Game over!\n");
   return 0;
 }
