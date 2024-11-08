@@ -14,7 +14,7 @@ static u32 str_to_u32(const char *string) {
   for (size_t i = 0; i < len; ++i) {
     const char current_char = string[i];
     if (current_char - '0' < 0 || current_char - '0' > 9)
-      return U32_MAX;  // Indicates invalid format
+      return U32_MAX; // Indicates invalid format
 
     const u32 digit = current_char - '0';
     num = num * 10 + digit;
@@ -66,7 +66,8 @@ static void show_hint(const u32 chosen_number, const u32 guessed_number) {
 int main() {
   printf("Guess the Number!\n");
 
-  const u32 max_num = prompt("Enter the max number that computer can choose\n=> ");
+  const u32 max_num =
+      prompt("Enter the max number that computer can choose\n=> ");
   if (max_num == 0) {
     printf("E: Max number can't be set to zero\n");
     return EXIT_FAILURE;
