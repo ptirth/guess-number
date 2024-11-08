@@ -44,5 +44,25 @@ static u32 prompt(const char *message) {
 
 int main() {
   printf("Guess the Number!\n");
+
+  const u32 max_num = prompt("Enter the max number that computer can choose\n=> ");
+  if (max_num == U32_MAX) {
+    printf("E: Not a correct number\n");
+    return EXIT_FAILURE;
+  }
+
+  const u32 tries = prompt("Enter the number of tries you want to take\n=> ");
+  if (tries == U32_MAX) {
+    printf("E: Not a correct number\n");
+    return EXIT_FAILURE;
+  }
+
+  const u32 hints_after =
+      prompt("Enter the number of try after which you want to see hints\n=> ");
+  if (hints_after == U32_MAX) {
+    printf("E: Not a correct number\n");
+    return EXIT_FAILURE;
+  }
+
   return 0;
 }
