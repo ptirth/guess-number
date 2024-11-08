@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define MAX_LINE_LEN 121
 
@@ -69,6 +70,9 @@ int main() {
     printf("E: You can't have hints on every try\n");
     return EXIT_FAILURE;
   }
+
+  srand(time(NULL));
+  const u32 chosen_number = rand() % (max_num + 1);
 
   return 0;
 }
