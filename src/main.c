@@ -74,6 +74,8 @@ int main() {
   srand(time(NULL));
   const u32 chosen_number = rand() % (max_num + 1);
 
+  printf("\nStarting the game...\n");
+
   for (u32 i = 1; i <= tries; ++i) {
     if (i == 1) {
       printf("-> Guess the number\n=> ");
