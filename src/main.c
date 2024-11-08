@@ -49,6 +49,20 @@ static u32 prompt(const char *message) {
   return answer;
 }
 
+static void show_hint(const u32 chosen_number, const u32 guessed_number) {
+  const i32 diff = guessed_number - chosen_number;
+
+  if (diff > 5) {
+    printf("-> The number is too large!\n");
+  } else if (diff > 0) {
+    printf("-> The number is just a little larger!\n");
+  } else if (diff < -5) {
+    printf("-> The number is too small!\n");
+  } else if (diff < 0) {
+    printf("-> The number is just a little smaller!\n");
+  }
+}
+
 int main() {
   printf("Guess the Number!\n");
 
@@ -89,6 +103,10 @@ int main() {
     if (guess == chosen_number) {
       printf("---> You won!\n");
       return EXIT_SUCCESS;
+    }
+
+    if (i >= hints_after) {
+      show_hint(chosen_number, guess);
     }
   }
 
