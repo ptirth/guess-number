@@ -39,28 +39,34 @@ static u32 prompt(const char *message) {
   char buffer[MAX_LINE_LEN] = {0};
   getline(buffer);
 
-  return str_to_u32(buffer);
+  const u32 answer = str_to_u32(buffer);
+  if (answer == U32_MAX) {
+    printf("E: Not a correct number\n");
+    exit(EXIT_FAILURE);
+  }
+
+  return answer;
 }
 
 int main() {
   printf("Guess the Number!\n");
 
   const u32 max_num = prompt("Enter the max number that computer can choose\n=> ");
-  if (max_num == U32_MAX) {
-    printf("E: Not a correct number\n");
+  if (max_num == 0) {
+    printf("E: Max number can't be set to zero\n");
     return EXIT_FAILURE;
   }
 
   const u32 tries = prompt("Enter the number of tries you want to take\n=> ");
-  if (tries == U32_MAX) {
-    printf("E: Not a correct number\n");
+  if (tries == 0) {
+    printf("E: You need at least one try\n");
     return EXIT_FAILURE;
   }
 
   const u32 hints_after =
       prompt("Enter the number of try after which you want to see hints\n=> ");
-  if (hints_after == U32_MAX) {
-    printf("E: Not a correct number\n");
+  if (hints_after > tries - 1) {
+    printf("E: You can't have hints on every try\n");
     return EXIT_FAILURE;
   }
 
